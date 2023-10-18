@@ -20,7 +20,7 @@ int main()
 
 	//to find number of non zero elements
 	for (int i = 0; i < r; i++){
-		 for (int j = 0; j < 5; j++){
+		 for (int j = 0; j < c; j++){
 			 if (matrix[i][j] != 0)
                 size++;
 		 }
