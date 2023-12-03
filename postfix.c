@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define MAX_SIZE 10
 int  top = -1 ;
 int Stack[MAX_SIZE] ;
@@ -30,7 +31,8 @@ int peek()
 {
     if(top == -1){
 		printf("empty\n");
-		return 0;
+        exit(1);
+		
 	}
         
     else
@@ -82,9 +84,6 @@ void postfix(char pos)
         }
         else if (pos >= '0' && pos <= '9')
              push(pos- '0' );
-    
-        
-
 }
 
 int main()
