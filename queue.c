@@ -1,3 +1,6 @@
+/* JULIA JOMON
+    CU-30   */
+
 #include <stdio.h>
 #define MAX_SIZE 10
 int Queue[MAX_SIZE];
@@ -6,7 +9,7 @@ int rear = -1;
 
 void enqueue(int item)
 {
-    if(front == rear == MAX_SIZE){
+    if(front ==MAX_SIZE && rear == MAX_SIZE){
         printf("Queue is full\n");
         return;
     }
@@ -17,7 +20,7 @@ void enqueue(int item)
 void dequeue()
 {
     int item;
-    if(front == rear == 0){
+    if(front == - 1 || front > rear){
         printf("Queue is empty\n");
         return;
     }
@@ -29,7 +32,7 @@ void dequeue()
 
 void display()
 {
-    if(front == rear == 0){
+    if(front == - 1 || front > rear){
         printf("Queue is empty\n");
         return;
     }
