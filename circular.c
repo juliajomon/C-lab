@@ -1,9 +1,11 @@
+/* JULIA JOMON
+    CU-30   */
+    
 #include <stdio.h>
 #define MAX_SIZE 10
 int Queue[MAX_SIZE];
 int front = -1;
 int rear = -1;
-
 
 void enqueue(int item)
 {
