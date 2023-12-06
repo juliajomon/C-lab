@@ -1,91 +1,91 @@
+/* JULIA JOMON
+    CU-30   */
+
 #include <stdio.h>
-#define MAX_SIZE 5
+#define MAX_SIZE 10
+int  top = -1 ;
+int Stack[MAX_SIZE] ;
 
-int Stack[MAX_SIZE];
-int item,top=0; 
-
-
-void Push(int item , int Stack[MAX_SIZE])
+void push(int item)
 {
-	if(top == MAX_SIZE )
-		printf("Stack is empty");
-	else
-		Stack[top] = item;
-		top++;
+    if(top == MAX_SIZE -1)
+        printf("full");
+    else
+        top=top+1;
+        Stack[top]=item;
 }
-
-void Pop(int Stack[MAX_SIZE])
+void pop()
 {
-	if (top== 0)
-		printf("Stak is empty");
-	else
-		item = Stack[top] ;
-		top--;
-}
-
-void Peek(int Stack[MAX_SIZE])
-{
-	if( top == MAX_SIZE-1)
-		printf("Stack is empty");
-	else
-		printf("last element %d \n", Stack[top]);
-		
-}
-
-
-void Display(int Stack[MAX_SIZE] )
-{
-	if (top== 0)
-		printf("Stak is empty");
-	else
-	{
-	 for(int i=0;i<top;i++)
-		printf("%d ", Stack[i]);
+    int item;
+    if(top == -1){
+		printf("Empty\n");
+		return;
 	}
-	printf("\n");
+        
+    else
+        item = Stack[top];
+        top=top-1;
+        printf("deleted %d\n", item);
 }
 
+void peek()
+{
+    if(top == -1){
+		printf("empty\n");
+		return;
+	}
+        
+    else
+        printf("%d\n",Stack[top]);
+}
 
+void display()
+{
+	if(top == -1){
+        printf("empty\n");
+		return;
+	}
+    else
+		for(int i=top;i>=0;i--){
+			printf("%d\n",Stack[i]);
+    }
+}
 int main()
 {
-	int con;
-	int opp;
-	do{
-		printf("\n 1.Push \n 2.Pop \n 3.Peek \n 4.Display \n");
-		printf("enter choice \t");
-		scanf("%d", &opp);
-		
-		switch(opp)
-		{
-			case 1 :
-			 printf("enter item \t");
-			 scanf("%d",&item);
-			 Push( item , Stack);
-			 printf("item pushed \n");
-			 break;
-			 
-			case 2 :
-			 Pop(Stack);
-			 printf("item deleted \n ");
-			 break;
-			 
-			case 3 :
-			 Peek(Stack);
-			 break;
-			 
-			case 4 :
-			 Display(Stack);
-			 break;
-			 
-			default :
-			 printf("Invalid");
-			 break;
-		}
-		printf("Do you want to continue(1/0)");
-		scanf("%d",&con);	
-	}while(con == 1);
-	return 0;	
+    int opp,item;
+    char ch = 'y';
+    do
+    {   
+        printf("Size of stack is %d\n",MAX_SIZE);
+        printf("Space left %d\n",(10-top));
+        printf("1.Push\n2.Pop\n3.Peek\n4.Display\n");
+        scanf("%d",&opp);
+
+        switch (opp)
+        {
+        case 1 :
+            printf("Enter value to push: ");
+            scanf("%d",&item);
+            push(item);
+            break;
+
+        case 2 :
+            pop();
+            break;
+
+        case 3 :
+            peek();
+            break;
+
+        case 4 :
+            display();
+            break;
+
+        default:
+            break;
+        }
+        printf("Do you want to continue(y/n) ");
+        scanf("%s",&ch);
+    }while (ch == 'y');
+    return 0;   
 }
-	
-	
-	
